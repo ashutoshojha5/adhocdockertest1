@@ -1,8 +1,8 @@
-#How to Deploy
+# How to Deploy
 * cd <repo>
 * kubectl apply -f .
 
-#How to Access
+# How to Access
 * run `kubectl get svc`
 * get the port number from Ports column
 
