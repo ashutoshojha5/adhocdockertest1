@@ -1,6 +1,5 @@
 # How to Deploy
-* cd <repo>
-* kubectl apply -f .
+* `kubectl apply -f .`
 
 # How to Access
 * run `kubectl get svc`
