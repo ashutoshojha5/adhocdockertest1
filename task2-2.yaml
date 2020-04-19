@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ashutoshojha
+  namespace: ashutoshojha
+  labels:
+    app: ashutoshojha
+spec:
+  containers:
+    - name: ashutoshojha
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: html
+      ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+    - name: ashutoshojhac2
+      image: alpine
+      workingDir: /covid
+      command:
+        - '/bin/sh'
+      args:
+        - '-c'
+        - 'while true; do cal 2020 >> cal_2020.txt; sleep 20; done;'
+      volumeMounts:
+        - mountPath: /covid/
+          name: html
+  volumes:
+    - name: html
+      emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ashutoshojha
+spec:
+  type: NodePort
+  selector:
+    app: ashutoshojha
+  ports:
+    - port: 80
+      targetPort: http

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ashutoshpod
+  namespace: default
+  labels:
+    app: ashutoshpod
+spec:
+  containers:
+    - name: alpine
+      image: alpine
+      command:
+        - '/bin/sh'
+      args:
+        - '-c'
+        - 'ping fb.com'
+    - name: busybox
+      image: busybox
+      command:
+        - '/bin/sh'
+      args:
+        - '-c'
+        - 'sleep 1000000'
